@@ -8,22 +8,31 @@ $(function() {
 	$('#search').on('submit', function (event) {
     
     event.preventDefault();
-    console.log('form submitted!');
+    console.log('form submitted!');  
+    var searchTrack = $('#track').val();
+    console.log(searchTrack);
 
-    	var searchedArtist = $('#artist').val();
-    		console.log(searchedArtist);
+    $.get('https://api.spotify.com/v1/search?q=' + searchTrack + '&type=track', function (data) {
+        console.log(data);
+    });
 
-    	$.get('https://api.spotify.com/v1/search?q=' + searchedArtist + '&type=artist', function (data) {
+
+
+  });
+    // 	var searchedArtist = $('#artist').val();
+    // 		console.log(searchedArtist);
+
+    // 	$.get('https://api.spotify.com/v1/search?q=' + searchedArtist + '&type=artist', function (data) {
       
-      		console.log(data);
-    var artistResults = data.artists.items;
+    //   		console.log(data);
+    // var artistResults = data.artists.items;
 
       
-      artistResults.forEach(function (artist) {
-        console.log(artist.name);
+    //   artistResults.forEach(function (artist) {
+    //     console.log(artist.name);
 
         
-        $('#results').append('<p>' + artist.name + '</p>');
+    //     $('#results').append('<p>' + artist.name + '</p>');
 
 
 });
